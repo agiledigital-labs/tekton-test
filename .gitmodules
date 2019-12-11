@@ -1,0 +1,9 @@
+[submodule "dashboard"]
+	path = dashboard
+	url = git@github.com:tektoncd/dashboard.git
+[submodule "triggers"]
+	path = triggers
+	url = git@github.com:tektoncd/triggers.git
+[submodule "pipeline"]
+	path = pipeline
+	url = https://github.com/tektoncd/pipeline.git
