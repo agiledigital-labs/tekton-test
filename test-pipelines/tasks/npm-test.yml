@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: npm-test
+spec:
+  steps:
+    - name: echo
+      image: node:10
+      command:
+        - echo
+      args:
+        - "npm test"
+    - name: npm-install
+      image: node:10
+      command:
+        - npm
+      args:
+        - install
+    - name: npm-test
+      image: node:10
+      command:
+        - npm
+      args:
+        - run
+        - test

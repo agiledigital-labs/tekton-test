@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: yarn-build
+spec:
+  steps:
+    - name: echo
+      image: node:10
+      command:
+        - echo
+      args:
+        - "yarn build and install"
+    - name: yarn-install
+      image: node:10
+      command:
+        - yarn
+      args:
+        - install
+    - name: yarn-build
+      image: node:10
+      command:
+        - yarn
+      args:
+        - build
