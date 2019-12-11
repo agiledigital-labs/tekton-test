@@ -448,7 +448,9 @@ kind: ConfigMap
 metadata:
   name: config-artifact-pvc
   namespace: tekton-pipelines
-
+data:
+  size: 4Gi
+  storageClassName: Local
 ---
 apiVersion: v1
 data:
