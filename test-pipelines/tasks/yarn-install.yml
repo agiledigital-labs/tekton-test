@@ -1,19 +1,19 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: yarn-test
+  name: yarn-install
 spec:
   inputs:
     resources:
       - name: workspace
         type: git
   steps:
-    - name: yarn-test
+    - name: yarn-install
       image: node:10.17
       command:
         - yarn
       args:
-        - test
+        - install
   outputs:
     resources:
       - name: workspace

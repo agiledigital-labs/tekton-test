@@ -1,0 +1,43 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: tutorial-pipeline
+spec:
+  resources:
+    - name: source
+      type: git
+  tasks:
+    - name: yarn-install
+      taskRef:
+        name: yarn-install
+      resources:
+        inputs:
+          - name: workspace
+            resource: source
+        outputs:
+          - name: workspace
+            resource: source
+    - name: yarn-build
+      taskRef:
+        name: yarn-build
+      resources:
+        inputs:
+          - name: workspace
+            resource: source
+            from:
+              - yarn-install
+        outputs:
+          - name: workspace
+            resource: source
+    - name: yarn-test
+      taskRef:
+        name: yarn-test
+      resources:
+        inputs:
+          - name: workspace
+            resource: source
+            from:
+              - yarn-install
+        outputs:
+          - name: workspace
+            resource: source

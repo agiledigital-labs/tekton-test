@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: test-git
+spec:
+  type: git
+  params:
+    - name: ssh
+      value: "git@github.com:agiledigital/tekton-test.git"
+    - name: revision
+      value: master
+    - name: submodules
+      value: "false"

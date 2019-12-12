@@ -3,22 +3,18 @@ kind: Task
 metadata:
   name: yarn-build
 spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
   steps:
-    - name: echo
-      image: node:10
-      command:
-        - echo
-      args:
-        - "yarn build and install"
-    - name: yarn-install
-      image: node:10
-      command:
-        - yarn
-      args:
-        - install
     - name: yarn-build
-      image: node:10
+      image: node:10.17
       command:
         - yarn
       args:
         - build
+  outputs:
+    resources:
+      - name: workspace
+        type: git
