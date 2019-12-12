@@ -7,37 +7,17 @@ spec:
     - name: source
       type: git
   tasks:
-    - name: yarn-install
+    - name: echo
       taskRef:
-        name: yarn-install
+        name: echo-hello-world
       resources:
         inputs:
           - name: workspace
             resource: source
-        outputs:
-          - name: workspace
-            resource: source
-    - name: yarn-build
+    - name: echo2
       taskRef:
-        name: yarn-build
+        name: echo-hello-world2
       resources:
         inputs:
-          - name: workspace
-            resource: source
-            from:
-              - yarn-install
-        outputs:
-          - name: workspace
-            resource: source
-    - name: yarn-test
-      taskRef:
-        name: yarn-test
-      resources:
-        inputs:
-          - name: workspace
-            resource: source
-            from:
-              - yarn-install
-        outputs:
           - name: workspace
             resource: source

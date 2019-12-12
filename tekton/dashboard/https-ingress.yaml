@@ -5,13 +5,13 @@ metadata:
   namespace: tekton-pipelines
 spec:
   tls:
-  - hosts:
-    - ${URL}
-    secretName: ${CERTIFICATE_SECRET_NAME}
+    - hosts:
+        - tekton.apps.fedex.ocp4.agiledigital.co
+      secretName: apps-wildcard-tls
   rules:
-  - host: ${URL}
-    http:
-      paths:
-      - backend:
-          serviceName: tekton-dashboard
-          servicePort: 9097
+    - host: tekton.apps.fedex.ocp4.agiledigital.co
+      http:
+        paths:
+          - backend:
+              serviceName: tekton-dashboard
+              servicePort: 9097

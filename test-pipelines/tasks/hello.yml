@@ -3,10 +3,32 @@ kind: Task
 metadata:
   name: echo-hello-world
 spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
+        targetPath: test-projects/tekton-tester-ts
   steps:
     - name: echo
-      image: ubuntu
+      image: circleci/node:10.17
       command:
-        - echo
+        - ls
       args:
-        - "hello world"
+        - "-la"
+      workingDir: "/workspace/"
+    - name: whoami
+      image: circleci/node:10.17
+      command:
+        - ls
+      args:
+        - "-la"
+      workingDir: "/workspace/workspace"
+    - name: cp
+      image: circleci/node:10.17
+      command:
+        - cp
+      args:
+        - "-r"
+        - "./"
+        - "/workspace/output"
+      workingDir: "/workspace/workspace"

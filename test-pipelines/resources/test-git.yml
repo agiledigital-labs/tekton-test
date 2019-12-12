@@ -5,8 +5,8 @@ metadata:
 spec:
   type: git
   params:
-    - name: ssh
-      value: "git@github.com:agiledigital/tekton-test.git"
+    - name: url
+      value: "https://github.com/agiledigital/tekton-test.git"
     - name: revision
       value: master
     - name: submodules

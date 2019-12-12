@@ -3,10 +3,32 @@ kind: Task
 metadata:
   name: echo-hello-world2
 spec:
+  inputs:
+    resources:
+      - name: workspace
+        type: git
   steps:
-    - name: echo
-      image: node:10.17
+    - name: list
+      image: circleci/node:10.17
       command:
-        - echo
+        - ls
       args:
-        - "hello world"
+        - "-la"
+      workingDir: "/workspace/workspace/test-projects/tekton-tester-ts"
+    - name: echo
+      image: circleci/node:10.17
+      command:
+        - yarn
+      args:
+        - "install"
+      workingDir: "/workspace/workspace/test-projects/tekton-tester-ts"
+    - name: test
+      image: circleci/node:10.17
+      command:
+        - yarn
+      args:
+        - "test"
+      env:
+        - name: CI
+          value: "true"
+      workingDir: "/workspace/workspace/test-projects/tekton-tester-ts"

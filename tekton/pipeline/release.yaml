@@ -20,7 +20,7 @@ spec:
   hostPID: false
   privileged: false
   runAsUser:
-    rule: RunAsAny
+    rule: MustRunAsNonRoot
   seLinux:
     rule: RunAsAny
   supplementalGroups:
